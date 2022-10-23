@@ -1,36 +1,24 @@
-public class Moves {
 
 
-    /*
+/*
     Board looks like:
-      |
-      |
-      |
-    a |
-      |
-      |
-      |
-      |_ _ _ _ _ _ _ _
-                b
+      a b c d e f g h
+    8                 8
+    7                 7
+    6                 6
+    5                 5
+    4                 4
+    3                 3
+    2                 2
+    1                 1
+      a b c d e f g h
+
      */
+public class Moves {
+    public void makePawnMove(String moveField, String[][] board) {
+        if(String.valueOf(moveField.charAt(0)).equals("a")) {
 
-    void possibleMoveForPawn(int[][] board, int actualA, int actualB, int newA, int newB) {
-        //ruch na wprost
-
-        if (actualA == 2) {
-
-        }
-
-        if (actualA + 1 <= 8) {
-            //possible móve zrób coś np. podświetl na zielono
-        }
-        //ruch na skos w prawo
-        if (newA + 1 <= 8 && newB + 1 <= 8 && newA == (actualA + 1)) {
-            //możliwy ruch
-        }
-        //ruch na skos w lewo
-        if (newA + 1 <= 8 && newB - 1 <= 8 && newA == (actualA + 1)) {
-            //możliwy ruch
         }
     }
-}
+    }
+
