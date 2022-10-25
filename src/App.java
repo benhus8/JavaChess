@@ -30,7 +30,11 @@ public class App {
     boolean isWhiteTurn = true;
 
         while (true) {
-
+            if(isWhiteTurn) {
+                System.out.println("         ---WHITE MOVE---");
+            }else {
+                System.out.println("         ---BLACK MOVE---");
+            }
             utils.printBoard(board);
             Refactor refactor = new Refactor();
             Scanner sc = new Scanner(System.in);
