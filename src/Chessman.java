@@ -1,4 +1,5 @@
 public interface Chessman {
 
-    void makeMove(String position, String[][] board, Boolean isWhite);
+    //return true when move is correct, false otherwise
+    Boolean makeMove(String position, String[][] board, Boolean isWhite);
 }
