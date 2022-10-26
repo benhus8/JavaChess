@@ -19,44 +19,45 @@ public class Pawn implements Chessman {
             return true;
         }
         //normal move for black
-        if (board[firstParameter - 1][secondParameter].equals("0P") && !isWhite &&
+        if (firstParameter - 1 >= 0 && board[firstParameter - 1][secondParameter].equals("0P") && !isWhite &&
                 board[firstParameter][secondParameter].equals("..")) {
             board[firstParameter - 1][secondParameter] = "..";
             board[firstParameter][secondParameter] = "0P";
+            System.out.println("DONE IF BCK move normal");
             return true;
             //attack move for black from left side
-        } else if (board[firstParameter - 1][secondParameter - 1].equals("0P")  && !isWhite &&
+        } else if (firstParameter - 1 >= 0 && secondParameter - 1 >= 0 && board[firstParameter - 1][secondParameter - 1].equals("0P")  && !isWhite &&
                 String.valueOf(board[firstParameter][secondParameter].charAt(0)).equals("1")) {
             board[firstParameter - 1][secondParameter - 1] = "..";
             board[firstParameter][secondParameter] = "0P";
             return true;
             //attack move for black from right side
-        } else if (board[firstParameter - 1][secondParameter + 1].equals("0P")  && !isWhite &&
+        } else if (firstParameter - 1 >= 0 && secondParameter + 1 <= 8 && board[firstParameter - 1][secondParameter + 1].equals("0P")  && !isWhite &&
                 String.valueOf(board[firstParameter][secondParameter].charAt(0)).equals("1")) {
             board[firstParameter - 1][secondParameter + 1] = "..";
             board[firstParameter][secondParameter] = "0P";
             return true;
         }
         //normal move for white
-        if (board[firstParameter + 1][secondParameter].equals("1P") && isWhite &&
+        if (firstParameter + 1 >= 0 && board[firstParameter + 1][secondParameter].equals("1P") && isWhite &&
                 board[firstParameter][secondParameter].equals("..")) {
             board[firstParameter + 1][secondParameter] = "..";
             board[firstParameter][secondParameter] = "1P";
+            System.out.println("DONE IF BCK move normal");
             return true;
             //attack move for white from left side
-        }else if (board[firstParameter + 1][secondParameter - 1].equals("1P")  && isWhite &&
+        } else if (firstParameter + 1 <= 8 && secondParameter - 1 >= 0 && board[firstParameter + 1][secondParameter - 1].equals("1P")  && isWhite &&
                 String.valueOf(board[firstParameter][secondParameter].charAt(0)).equals("0")) {
             board[firstParameter + 1][secondParameter - 1] = "..";
             board[firstParameter][secondParameter] = "1P";
             return true;
             //attack move for white from right side
-        }else if (board[firstParameter + 1][secondParameter + 1].equals("1P")  && isWhite &&
+        } else if (firstParameter + 1 <= 8 && secondParameter + 1 <= 8 && board[firstParameter + 1][secondParameter + 1].equals("1P")  && isWhite &&
                 String.valueOf(board[firstParameter][secondParameter].charAt(0)).equals("1")) {
             board[firstParameter - 1][secondParameter + 1] = "..";
             board[firstParameter][secondParameter] = "0P";
             return true;
         }
-        //attack move
 
         return  false;
     }

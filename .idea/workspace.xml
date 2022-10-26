@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f84dc374-1ba6-40d5-b3e2-611284a7bb34" name="Changes" comment="add 2 fields move pawn and make refactor better">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_10_2022_11_42__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_10_2022_11_42__Changes_.xml" afterDir="false" />
+    <list default="true" id="f84dc374-1ba6-40d5-b3e2-611284a7bb34" name="Changes" comment="add move success validation and attack move for pawn">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_10_2022_11_42__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaChess/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaChess/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaChess/Chessman.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaChess/Chessman.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaChess/Pawn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaChess/Pawn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaChess/Refactor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaChess/Refactor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaChess/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaChess/Utils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Chessman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Chessman.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pawn.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,6 +74,7 @@
       <workItem from="1666079788179" duration="35000" />
       <workItem from="1666080781465" duration="3415000" />
       <workItem from="1666597023933" duration="12092000" />
+      <workItem from="1666764012241" duration="1082000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1666604665379</created>
@@ -95,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666630733790</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add move success validation and attack move for pawn">
+      <created>1666679856231</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1666679856232</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +117,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
     <MESSAGE value="add 2 fields move pawn and make refactor better" />
-    <option name="LAST_COMMIT_MESSAGE" value="add 2 fields move pawn and make refactor better" />
+    <MESSAGE value="add move success validation and attack move for pawn" />
+    <option name="LAST_COMMIT_MESSAGE" value="add move success validation and attack move for pawn" />
   </component>
 </project>
