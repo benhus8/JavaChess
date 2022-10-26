@@ -23,7 +23,6 @@ public class Pawn implements Chessman {
                 board[firstParameter][secondParameter].equals("..")) {
             board[firstParameter - 1][secondParameter] = "..";
             board[firstParameter][secondParameter] = "0P";
-            System.out.println("DONE IF BCK move normal");
             return true;
             //attack move for black from left side
         } else if (firstParameter - 1 >= 0 && secondParameter - 1 >= 0 && board[firstParameter - 1][secondParameter - 1].equals("0P")  && !isWhite &&
@@ -43,7 +42,6 @@ public class Pawn implements Chessman {
                 board[firstParameter][secondParameter].equals("..")) {
             board[firstParameter + 1][secondParameter] = "..";
             board[firstParameter][secondParameter] = "1P";
-            System.out.println("DONE IF BCK move normal");
             return true;
             //attack move for white from left side
         } else if (firstParameter + 1 <= 8 && secondParameter - 1 >= 0 && board[firstParameter + 1][secondParameter - 1].equals("1P")  && isWhite &&
