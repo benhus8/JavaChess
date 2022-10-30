@@ -31,7 +31,7 @@ public class Pawn implements Chessman {
             board[firstParameter][secondParameter] = "0P";
             return true;
             //attack move for black from right side
-        } else if (firstParameter - 1 >= 0 && secondParameter + 1 <= 8 && board[firstParameter - 1][secondParameter + 1].equals("0P")  && !isWhite &&
+        } else if (firstParameter - 1 >= 0 && secondParameter + 1 < 8 && board[firstParameter - 1][secondParameter + 1].equals("0P")  && !isWhite &&
                 String.valueOf(board[firstParameter][secondParameter].charAt(0)).equals("1")) {
             board[firstParameter - 1][secondParameter + 1] = "..";
             board[firstParameter][secondParameter] = "0P";
@@ -44,16 +44,16 @@ public class Pawn implements Chessman {
             board[firstParameter][secondParameter] = "1P";
             return true;
             //attack move for white from left side
-        } else if (firstParameter + 1 <= 8 && secondParameter - 1 >= 0 && board[firstParameter + 1][secondParameter - 1].equals("1P")  && isWhite &&
+        } else if (firstParameter + 1 < 8 && secondParameter - 1 >= 0 && board[firstParameter + 1][secondParameter - 1].equals("1P")  && isWhite &&
                 String.valueOf(board[firstParameter][secondParameter].charAt(0)).equals("0")) {
             board[firstParameter + 1][secondParameter - 1] = "..";
             board[firstParameter][secondParameter] = "1P";
             return true;
             //attack move for white from right side
-        } else if (firstParameter + 1 <= 8 && secondParameter + 1 <= 8 && board[firstParameter + 1][secondParameter + 1].equals("1P")  && isWhite &&
-                String.valueOf(board[firstParameter][secondParameter].charAt(0)).equals("1")) {
-            board[firstParameter - 1][secondParameter + 1] = "..";
-            board[firstParameter][secondParameter] = "0P";
+        } else if (firstParameter + 1 < 8 && secondParameter + 1 < 8 && board[firstParameter + 1][secondParameter + 1].equals("1P")  && isWhite &&
+                String.valueOf(board[firstParameter][secondParameter].charAt(0)).equals("0")) {
+            board[firstParameter + 1][secondParameter + 1] = "..";
+            board[firstParameter][secondParameter] = "1P";
             return true;
         }
 

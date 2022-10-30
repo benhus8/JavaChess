@@ -21,7 +21,10 @@ public class App {
         while (true) {
             // check if there is only 2 kings on the board
             //check if is checked know
-            //check if check mate
+                //if yes
+                //check is check mate
+                //continuation
+                // end of the game!
             if(isWhiteTurn) {
                 System.out.println("         ---WHITE MOVE---");
             }else {
