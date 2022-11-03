@@ -7,7 +7,6 @@ public class Utils {
     }
 
     public void printBoard(String[][] board1) {
-//        String[][] board = new String[8][8];
         System.out.println("   A   B   C   D   E   F   G   H");
         for (int i = 0; i < 8; i++) {
             System.out.print(i + 1);

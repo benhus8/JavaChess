@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class App {
     static Utils utils = new Utils();
     static Pawn pawn = new Pawn();
-
     static Rook rook = new Rook();
+    static Bishop bishop = new Bishop();
 
     public static void main(String[] args) {
 
@@ -13,7 +13,7 @@ public class App {
                 {"0R", "0N", "0B", "0K", "0Q", "0B", "0N", "0R"},
                 {"0P", "0P", "0P", "0P", "0P", "0P", "0P", "0P"},
                 {"..", "..", "..", "..", "..", "..", "..", ".."},
-                {"..", "0R", "..", "..", "..", "..", "..", ".."},
+                {"..", "..", "..", "1B", "..", "..", "..", ".."},
                 {"..", "..", "..", "..", "..", "..", "..", ".."},
                 {"..", "..", "..", "..", "..", "..", "..", ".."},
                 {"1P", "1P", "1P", "1P", "1P", "1P", "1P", "1P"},
@@ -45,6 +45,9 @@ public class App {
             }
             if (input.length() == 3 & input.matches("[Rr][a-hA-H][1-8]")) {
                 if (rook.makeMove(refactor.refactorLetters(input.substring(1, 3)), board, isWhiteTurn)) isWhiteTurn = !isWhiteTurn;
+            }
+            if (input.length() == 3 & input.matches("[Bb][a-hA-H][1-8]")) {
+                if (bishop.makeMove((refactor.refactorLetters(input.substring(1, 3))), board, isWhiteTurn)) isWhiteTurn = !isWhiteTurn;
             }
         }
     }

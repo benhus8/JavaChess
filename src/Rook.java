@@ -9,10 +9,7 @@ public class Rook implements Chessman {
         int firstParameter = Integer.parseInt(String.valueOf(position.charAt(0)));
         int secondParameter = Integer.parseInt(String.valueOf(position.charAt(1)));
         //flag for checking is move can be done
-        boolean possibleHorizontalRightMove = true;
-        boolean possibleHorizontalFromLeft = true;
-        boolean possibleVerticaFromDown = true;
-        boolean possibleVerticalMove = true;
+        boolean possibleMoveFlag = true;
         String colorId;
         String enemyColorId;
 
@@ -26,8 +23,8 @@ public class Rook implements Chessman {
 
         if (board[firstParameter][secondParameter].startsWith(enemyColorId) || board[firstParameter][secondParameter].equals("..")) {
             for (int i = secondParameter + 1; i < 8; i++) {
-                possibleHorizontalRightMove = board[firstParameter][i].equals("..") || board[firstParameter][i].equals(colorId + rookId);
-                if (!possibleHorizontalRightMove) break;
+                possibleMoveFlag = board[firstParameter][i].equals("..") || board[firstParameter][i].equals(colorId + rookId);
+                if (!possibleMoveFlag) break;
                 //make move if true when not check next if
                 if (board[firstParameter][i].equals(colorId + rookId)) {
                     board[firstParameter][i] = "..";
@@ -37,8 +34,8 @@ public class Rook implements Chessman {
             }
             //check for left side of position
             for (int i = secondParameter - 1; i >= 0; i--) {
-                possibleHorizontalFromLeft = board[firstParameter][i].equals("..") || board[firstParameter][i].equals(colorId + rookId);
-                if (!possibleHorizontalFromLeft) break;
+                possibleMoveFlag = board[firstParameter][i].equals("..") || board[firstParameter][i].equals(colorId + rookId);
+                if (!possibleMoveFlag) break;
                 if (board[firstParameter][i].equals(colorId + rookId)) {
                     board[firstParameter][i] = "..";
                     board[firstParameter][secondParameter] = colorId + rookId;
@@ -47,8 +44,8 @@ public class Rook implements Chessman {
             }
             //down
             for (int i = firstParameter - 1; i >= 0; i--) {
-                possibleVerticaFromDown = board[i][secondParameter].equals("..") || board[i][secondParameter].equals(colorId + rookId);
-                if (!possibleVerticaFromDown) break;
+                possibleMoveFlag = board[i][secondParameter].equals("..") || board[i][secondParameter].equals(colorId + rookId);
+                if (!possibleMoveFlag) break;
                 if (board[i][secondParameter].equals(colorId + rookId)) {
                     board[i][secondParameter] = "..";
                     board[firstParameter][secondParameter] = colorId + rookId;
@@ -56,8 +53,8 @@ public class Rook implements Chessman {
                 }
             }
             for (int i = firstParameter + 1; i < 8; i++) {
-                possibleVerticalMove = board[i][secondParameter].equals("..") || board[i][secondParameter].equals(colorId + rookId);
-                if (!possibleVerticalMove) break;
+                possibleMoveFlag = board[i][secondParameter].equals("..") || board[i][secondParameter].equals(colorId + rookId);
+                if (!possibleMoveFlag) break;
                 if (board[i][secondParameter].equals(colorId + rookId)) {
                     board[i][secondParameter] = "..";
                     board[firstParameter][secondParameter] = colorId + rookId;
