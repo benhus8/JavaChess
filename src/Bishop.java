@@ -1,8 +1,8 @@
 public class Bishop implements Chessman {
-    static final String bishopId = "B";
+
 
     @Override
-    public Boolean makeMove(String position, String[][] board, Boolean isWhite) {
+    public Boolean makeMove(String position, String[][] board, Boolean isWhite, String chessmanId) {
         int firstParameter = Integer.parseInt(String.valueOf(position.charAt(0)));
         int secondParameter = Integer.parseInt(String.valueOf(position.charAt(1)));
 
@@ -24,39 +24,38 @@ public class Bishop implements Chessman {
         if (board[firstParameter][secondParameter].startsWith(enemyColorId) || board[firstParameter][secondParameter].equals("..")) {
             //check top right diagonal
             for (int i = 1; i < 8; i++) {
-                    if(firstParameter - i >= 0 && secondParameter + i < 8) {
-                        possibleMoveTopRightFlag = board[firstParameter - i][secondParameter + i].equals("..") || board[firstParameter - i][secondParameter + i].equals(colorId + bishopId);
-                        if (board[firstParameter - i][secondParameter + i].equals(colorId + bishopId) && possibleMoveTopRightFlag) {
+                    if(firstParameter - i >= 0 && secondParameter + i < 8 && possibleMoveTopRightFlag) {
+                        possibleMoveTopRightFlag = board[firstParameter - i][secondParameter + i].equals("..") || board[firstParameter - i][secondParameter + i].equals(colorId + chessmanId);
+                        if (board[firstParameter - i][secondParameter + i].equals(colorId + chessmanId) && possibleMoveTopRightFlag) {
                             board[firstParameter - i][secondParameter + i] = "..";
-                            board[firstParameter][secondParameter] = colorId + bishopId;
+                            board[firstParameter][secondParameter] = colorId + chessmanId;
                             return true;
                         }
                     }
-                    if(firstParameter + i < 8  && secondParameter - i >= 0) {
-                        possibleMoveTopLeftFlag = board[firstParameter + i][secondParameter - i].equals("..") || board[firstParameter + i][secondParameter - i].equals(colorId + bishopId);
-                        if (board[firstParameter + i][secondParameter - i].equals(colorId + bishopId) && possibleMoveTopLeftFlag) {
+                    if(firstParameter + i < 8  && secondParameter - i >= 0 && possibleMoveTopLeftFlag) {
+                        possibleMoveTopLeftFlag = board[firstParameter + i][secondParameter - i].equals("..") || board[firstParameter + i][secondParameter - i].equals(colorId + chessmanId);
+                        if (board[firstParameter + i][secondParameter - i].equals(colorId + chessmanId) && possibleMoveTopLeftFlag) {
                             board[firstParameter + i][secondParameter - i] = "..";
-                            board[firstParameter][secondParameter] = colorId + bishopId;
+                            board[firstParameter][secondParameter] = colorId + chessmanId;
                             return true;
                         }
                     }
-                    if(firstParameter + i < 8  && secondParameter + i < 8) {
-                        possibleMoveBottomRightFlag = board[firstParameter + i][secondParameter + i].equals("..") || board[firstParameter + i][secondParameter + i].equals(colorId + bishopId);
-                        if (board[firstParameter + i][secondParameter + i].equals(colorId + bishopId) && possibleMoveBottomRightFlag) {
+                    if(firstParameter + i < 8  && secondParameter + i < 8 && possibleMoveBottomRightFlag) {
+                        possibleMoveBottomRightFlag = board[firstParameter + i][secondParameter + i].equals("..") || board[firstParameter + i][secondParameter + i].equals(colorId + chessmanId);
+                        if (board[firstParameter + i][secondParameter + i].equals(colorId + chessmanId) && possibleMoveBottomRightFlag) {
                             board[firstParameter + i][secondParameter + i] = "..";
-                            board[firstParameter][secondParameter] = colorId + bishopId;
+                            board[firstParameter][secondParameter] = colorId + chessmanId;
                             return true;
                         }
                     }
-                    if(firstParameter - i >= 0  && secondParameter - i >= 0) {
-                        possibleMoveBottomLeftFlag = board[firstParameter - i][secondParameter - i].equals("..") || board[firstParameter - i][secondParameter - i].equals(colorId + bishopId);
-                        if (board[firstParameter - i][secondParameter - i].equals(colorId + bishopId) && possibleMoveBottomLeftFlag) {
-                            board[firstParameter - i][secondParameter - i] = "..";
-                            board[firstParameter][secondParameter] = colorId + bishopId;
-                            return true;
-                        }
+                    if(firstParameter - i >= 0  && secondParameter - i >= 0 && possibleMoveBottomLeftFlag) {
+                            possibleMoveBottomLeftFlag = board[firstParameter - i][secondParameter - i].equals("..") || board[firstParameter - i][secondParameter - i].equals(colorId + chessmanId);
+                            if (board[firstParameter - i][secondParameter - i].equals(colorId + chessmanId) && possibleMoveBottomLeftFlag) {
+                                board[firstParameter - i][secondParameter - i] = "..";
+                                board[firstParameter][secondParameter] = colorId + chessmanId;
+                                return true;
+                            }
                     }
-                //make move if true when not check next if
             }
         }
 

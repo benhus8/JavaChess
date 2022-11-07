@@ -1,6 +1,6 @@
 public class Pawn implements Chessman {
     @Override
-    public Boolean makeMove(String position, String[][] board, Boolean isWhite) {
+    public Boolean makeMove(String position, String[][] board, Boolean isWhite, String chessmanId) {
 
         int firstParameter = Integer.parseInt(String.valueOf(position.charAt(0)));
         int secondParameter = Integer.parseInt(String.valueOf(position.charAt(1)));
