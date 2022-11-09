@@ -10,12 +10,14 @@ public class App {
     static Knight knight = new Knight();
 
     static Queen queen = new Queen();
+
+    static King king = new King();
     public static void main(String[] args) {
 
         String[][] board = {
                 {"0R", "0N", "0B", "0K", "0Q", "0B", "0N", "0R"},
                 {"0P", "0P", "0P", "0P", "0P", "0P", "0P", "0P"},
-                {"..", "..", "..", "..", "..", "..", "..", ".."},
+                {"..", "..", "..", "0K", "..", "..", "..", ".."},
                 {"..", "..", "..", "1N", "..", "..", "..", ".."},
                 {"..", "..", "..", "..", "..", "..", "..", ".."},
                 {"..", "..", "..", "..", "..", "..", "..", ".."},
@@ -56,6 +58,9 @@ public class App {
             }
             if (input.length() == 3 & input.matches("[Qq][a-hA-H][1-8]")) {
                 if (queen.makeMove((refactor.refactorLetters(input.substring(1, 3))), board, isWhiteTurn, "Q")) isWhiteTurn = !isWhiteTurn;
+            }
+            if (input.length() == 3 & input.matches("[Kk][a-hA-H][1-8]")) {
+                if (king.makeMove((refactor.refactorLetters(input.substring(1, 3))), board, isWhiteTurn, "K")) isWhiteTurn = !isWhiteTurn;
             }
         }
     }
