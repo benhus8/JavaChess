@@ -11,7 +11,7 @@ public class Pawn implements Chessman {
                 board[6][secondParameter] = "..";
                 return true;
             }
-            if (firstParameter + 1 >= 0 && board[firstParameter + 1][secondParameter].equals("1P") &&
+            if (firstParameter + 1 < 8 && board[firstParameter + 1][secondParameter].equals("1P") &&
                     board[firstParameter][secondParameter].equals("..")) {
                 board[firstParameter + 1][secondParameter] = "..";
                 board[firstParameter][secondParameter] = "1P";

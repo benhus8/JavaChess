@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 
 public class App {
+    static GameRules gameRules = new GameRules();
     static Utils utils = new Utils();
     static Pawn pawn = new Pawn();
     static Rook rook = new Rook();
@@ -12,6 +13,7 @@ public class App {
     static Queen queen = new Queen();
 
     static King king = new King();
+
     public static void main(String[] args) {
 
         String[][] board = {
@@ -25,12 +27,41 @@ public class App {
                 {"1R", "1N", "1B", "1K", "1Q", "1B", "1N", "1R"},
         };
         boolean isWhiteTurn = true;
+        boolean check= false;
+        boolean whiteCheck = false;
+        boolean blackCheck = false;
         while (true) {
+            //checking mate!
+            if(isWhiteTurn && gameRules.isCheck(board, false) && blackCheck) {
+                System.out.println("         ---CHECK MATE!---");
+                System.out.println("         ---WHITE WINS!---");
+                break;
+            }
+            if(!isWhiteTurn && gameRules.isCheck(board, true) && whiteCheck) {
+                System.out.println("         ---CHECK MATE!---");
+                System.out.println("         ---BLACK WINS!---");
+                break;
+            }
+            //check!
+            if(gameRules.isCheck(board, isWhiteTurn)) {
+                if(isWhiteTurn) {
+                    whiteCheck = true;
+                } else {
+                    blackCheck = true;
+                }
+                System.out.println("CHECK");
+            }  else {
+                if(isWhiteTurn) {
+                    whiteCheck = false;
+                } else {
+                    blackCheck = false;
+                }
+            }
             // check if there is only 2 kings on the board
-            //check if is checked know
-            //if yes
-            //check is check mate
-            //continuation
+            //c heck if is checked know
+            // if yes
+            // check is check mate
+            // continuation
             // end of the game!
             if (isWhiteTurn) {
                 System.out.println("         ---WHITE MOVE---");
@@ -48,19 +79,24 @@ public class App {
                 else System.out.println("Wrong move parameter, try again!");
             }
             if (input.length() == 3 & input.matches("[Rr][a-hA-H][1-8]")) {
-                if (rook.makeMove(refactor.refactorLetters(input.substring(1, 3)), board, isWhiteTurn, "R")) isWhiteTurn = !isWhiteTurn;
+                if (rook.makeMove(refactor.refactorLetters(input.substring(1, 3)), board, isWhiteTurn, "R"))
+                    isWhiteTurn = !isWhiteTurn;
             }
             if (input.length() == 3 & input.matches("[Bb][a-hA-H][1-8]")) {
-                if (bishop.makeMove((refactor.refactorLetters(input.substring(1, 3))), board, isWhiteTurn, "B")) isWhiteTurn = !isWhiteTurn;
+                if (bishop.makeMove((refactor.refactorLetters(input.substring(1, 3))), board, isWhiteTurn, "B"))
+                    isWhiteTurn = !isWhiteTurn;
             }
             if (input.length() == 3 & input.matches("[Nn][a-hA-H][1-8]")) {
-                if (knight.makeMove((refactor.refactorLetters(input.substring(1, 3))), board, isWhiteTurn, "N")) isWhiteTurn = !isWhiteTurn;
+                if (knight.makeMove((refactor.refactorLetters(input.substring(1, 3))), board, isWhiteTurn, "N"))
+                    isWhiteTurn = !isWhiteTurn;
             }
             if (input.length() == 3 & input.matches("[Qq][a-hA-H][1-8]")) {
-                if (queen.makeMove((refactor.refactorLetters(input.substring(1, 3))), board, isWhiteTurn, "Q")) isWhiteTurn = !isWhiteTurn;
+                if (queen.makeMove((refactor.refactorLetters(input.substring(1, 3))), board, isWhiteTurn, "Q"))
+                    isWhiteTurn = !isWhiteTurn;
             }
             if (input.length() == 3 & input.matches("[Kk][a-hA-H][1-8]")) {
-                if (king.makeMove((refactor.refactorLetters(input.substring(1, 3))), board, isWhiteTurn, "K")) isWhiteTurn = !isWhiteTurn;
+                if (king.makeMove((refactor.refactorLetters(input.substring(1, 3))), board, isWhiteTurn, "K"))
+                    isWhiteTurn = !isWhiteTurn;
             }
         }
     }

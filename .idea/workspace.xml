@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f84dc374-1ba6-40d5-b3e2-611284a7bb34" name="Changes" comment="add move success validation and attack move for pawn">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f84dc374-1ba6-40d5-b3e2-611284a7bb34" name="Changes" comment="add king movement">
+      <change afterPath="$PROJECT_DIR$/src/GameRules.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaChess/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaChess/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JavaChess/Pawn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaChess/Pawn.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/King.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rook.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +78,12 @@
       <workItem from="1666764012241" duration="2780000" />
       <workItem from="1667128917557" duration="341000" />
       <workItem from="1667154953775" duration="6735000" />
+      <workItem from="1667420237672" duration="260000" />
+      <workItem from="1667492495868" duration="11233000" />
+      <workItem from="1667759078833" duration="908000" />
+      <workItem from="1668005866360" duration="14096000" />
+      <workItem from="1668611638174" duration="6000" />
+      <workItem from="1668623323027" duration="3000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1666604665379</created>
@@ -114,7 +120,28 @@
       <option name="project" value="LOCAL" />
       <updated>1666766314259</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="extend rook movement">
+      <created>1667420268674</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667420268674</updated>
+    </task>
+    <task id="LOCAL-00007" summary="refactor bishop moves and add knight">
+      <created>1667759102431</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667759102431</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add king movement">
+      <created>1668007510791</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1668007510791</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +162,9 @@
     <MESSAGE value="commit" />
     <MESSAGE value="add 2 fields move pawn and make refactor better" />
     <MESSAGE value="add move success validation and attack move for pawn" />
-    <option name="LAST_COMMIT_MESSAGE" value="add move success validation and attack move for pawn" />
+    <MESSAGE value="extend rook movement" />
+    <MESSAGE value="refactor bishop moves and add knight" />
+    <MESSAGE value="add king movement" />
+    <option name="LAST_COMMIT_MESSAGE" value="add king movement" />
   </component>
 </project>
