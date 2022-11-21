@@ -20,7 +20,7 @@ public class App {
                 {"0R", "0N", "0B", "0K", "0Q", "0B", "0N", "0R"},
                 {"0P", "0P", "0P", "0P", "0P", "0P", "0P", "0P"},
                 {"..", "..", "..", "0K", "..", "..", "..", ".."},
-                {"..", "..", "..", "1N", "..", "..", "..", ".."},
+                {"..", "..", "..", "..", "1P", "..", "..", ".."},
                 {"..", "..", "..", "..", "..", "..", "..", ".."},
                 {"..", "..", "..", "..", "..", "..", "..", ".."},
                 {"1P", "1P", "1P", "1P", "1P", "1P", "1P", "1P"},
@@ -31,6 +31,9 @@ public class App {
         boolean whiteCheck = false;
         boolean blackCheck = false;
         while (true) {
+            gameRules.isCheckMate(board, isWhiteTurn);
+
+
             //checking mate!
             if(isWhiteTurn && gameRules.isCheck(board, false) && blackCheck) {
                 System.out.println("         ---CHECK MATE!---");
@@ -57,12 +60,6 @@ public class App {
                     blackCheck = false;
                 }
             }
-            // check if there is only 2 kings on the board
-            //c heck if is checked know
-            // if yes
-            // check is check mate
-            // continuation
-            // end of the game!
             if (isWhiteTurn) {
                 System.out.println("         ---WHITE MOVE---");
             } else {

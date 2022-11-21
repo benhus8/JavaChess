@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class GameRules {
     public Boolean isCheck(String[][] board, Boolean isWhite) {
@@ -46,7 +48,73 @@ public class GameRules {
         }
     }
     public Boolean isCheckMate(String[][] board, Boolean isWhite) {
-
+        // 0. Find King! :))
+        // 1. check attacking on king position field - you know attacking field and chessman
+        // 2. check attacking on fields near king - add to list
+        // 3. check is sth attacking on fields from point 1 - add to possibleMove array
+        // 4. if possibleMove array.size() == 0 checkMate !isWhite wins!
+        // 4. return possible move array
+        String colorId;
+        int[] kingPosition = new int[2];
+        if (isWhite)  colorId = "1";
+        else colorId = "0";
+        //0.
+        for(int i = 0; i<8; i++){
+            for(int j = 0; j<8; j++){
+                if (board[i][j].equals(colorId + "K")) {
+                    kingPosition[0] = i;
+                    kingPosition[1] = j;
+                }
+            }
+        }
+        //1.
+        if(!isWhite) {
+            System.out.println(Arrays.toString(isAttacking(board, isWhite, kingPosition).get(0)));
+        }
         return false;
+    }
+    public List<int[]> isAttacking(String[][] board, Boolean isWhite, int[] field) {
+//        int[][]  attackingChessman = new int[0][];
+        List<int[]> attackingChessman = new ArrayList<>();
+        int firstParameter = field[0];
+        int secondParameter = field[1];
+
+        String colorId;
+        if (isWhite)  colorId = "0";
+        else colorId = "1";
+        // pawn
+        // bishop
+        // queen
+        // rook
+        // knight
+
+        if (isWhite) {
+            //pawn
+            if(firstParameter - 1 >= 0){
+                if(secondParameter - 1 >= 0 && board[firstParameter - 1][secondParameter - 1].equals(colorId + "P")) {
+                    int[] attackingFieldPosition = {firstParameter - 1, secondParameter - 1};
+                    attackingChessman.add(attackingFieldPosition);
+                }
+                if(secondParameter + 1 < 8 && board[firstParameter - 1][secondParameter + 1].equals(colorId + "P")) {
+                    int[] attackingFieldPosition = {firstParameter - 1, secondParameter + 1};
+                    attackingChessman.add(attackingFieldPosition);
+                }
+            }
+            //bishop
+
+        } else {
+            //pawn
+            if(firstParameter + 1 < 8){
+                if(secondParameter - 1 >= 0 && board[firstParameter + 1][secondParameter - 1].equals(colorId + "P")) {
+                    int[] attackingFieldPosition = {firstParameter + 1, secondParameter - 1};
+                    attackingChessman.add(attackingFieldPosition);
+                }
+                if(secondParameter + 1 < 8 && board[firstParameter + 1][secondParameter + 1].equals(colorId + "P")) {
+                    int[] attackingFieldPosition = {firstParameter + 1, secondParameter + 1};
+                    attackingChessman.add(attackingFieldPosition);
+                }
+            }
+        }
+        return attackingChessman;
     }
 }
