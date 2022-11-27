@@ -30,14 +30,18 @@ public class App {
 
             if(gameRules.isCheck(board, isWhiteTurn)) {
                 if(gameRules.isCheckMate(board, isWhiteTurn)) {
-                    System.out.println("Mejcik");
-                } else {
-                    System.out.println("nie ma mejcika");
+                    if(isWhiteTurn) {
+                        System.out.println("    BLACK WINS!");
+                    } else {
+                        System.out.println("    WHITE WINS!");
+                    }
+                    break;
+
                 }
                 if( isWhiteTurn) {
                     System.out.println("    Check on white king!");
                 } else {
-                    System.out.println("Check on black king!");
+                    System.out.println("    Check on black king!");
                 }
             }
 
