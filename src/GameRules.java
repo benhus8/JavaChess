@@ -22,12 +22,7 @@ public class GameRules {
             }
         }
         //is something ATTACKING MY KING! == is !isWhite attacking king!
-//        if (pawn.makeMove(kingPosition, board, !isWhite, "P").getPossibility()) return true;
-//        if (rook.makeMove(kingPosition, board, !isWhite, "R").getPossibility()) return true;
-//        if (bishop.makeMove(kingPosition, board, !isWhite, "B").getPossibility()) return true;
-//        if (knight.makeMove(kingPosition, board, !isWhite, "N").getPossibility()) return true;
-//        if (queen.makeMove(kingPosition, board, !isWhite, "Q").getPossibility()) return true;
-        return attackOnField(board, isWhite, kingPosition);
+        return attackOnField(board, isWhite, kingPosition).getPossibility();
 
     }
 
@@ -41,9 +36,14 @@ public class GameRules {
         int firstParameterKing = 0;
         int secondParameterKing = 0;
         String colorId;
+        String enemyColorId;
         if (isWhite) {
             colorId = "1";
-        } else colorId = "0";
+            enemyColorId = "0";
+        } else {
+            colorId = "0";
+            enemyColorId = "1";
+        }
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -56,53 +56,169 @@ public class GameRules {
         //if king move anywhere
         if (secondParameterKing + 1 < 8) {
             String newPosition = String.valueOf(firstParameterKing) + String.valueOf(secondParameterKing + 1);
-            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition))
+            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition).getPossibility())
                 return false;
         }
         if (firstParameterKing + 1 < 8 && secondParameterKing + 1 < 8) {
             String newPosition = String.valueOf(firstParameterKing + 1) + String.valueOf(secondParameterKing + 1);
-            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition))
+            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition).getPossibility())
                 return false;
         }
 
         if (firstParameterKing + 1 < 8) {
             String newPosition = String.valueOf(firstParameterKing + 1) + String.valueOf(secondParameterKing);
-            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition))
+            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition).getPossibility())
                 return false;
         }
         if (firstParameterKing + 1 < 8 && secondParameterKing - 1 >= 0) {
             String newPosition = String.valueOf(firstParameterKing + 1) + String.valueOf(secondParameterKing - 1);
-            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition))
+            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition).getPossibility())
                 return false;
         }
         if (secondParameterKing - 1 >= 0) {
             String newPosition = String.valueOf(firstParameterKing) + String.valueOf(secondParameterKing - 1);
-            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition))
+            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition).getPossibility())
                 return false;
         }
         if (firstParameterKing - 1 >= 0 && secondParameterKing - 1 >= 0) {
             String newPosition = String.valueOf(firstParameterKing - 1) + String.valueOf(secondParameterKing - 1);
-            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition))
+            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition).getPossibility())
                 return false;
         }
         if (firstParameterKing - 1 >= 0) {
             String newPosition = String.valueOf(firstParameterKing - 1) + String.valueOf(secondParameterKing);
-            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition))
+            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition).getPossibility())
                 return false;
         }
         if (firstParameterKing - 1 >= 0 && secondParameterKing + 1 < 8) {
+
             String newPosition = String.valueOf(firstParameterKing - 1) + String.valueOf(secondParameterKing + 1);
-            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition))
+            if (king.makeMove(newPosition, board, isWhite, "K").getPossibility() && !attackOnField(board, isWhite, newPosition).getPossibility()) {
                 return false;
+            }
         }
+
         //if anything can kill the checking chessPiece
+        String kingPosition = String.valueOf(firstParameterKing) + String.valueOf(secondParameterKing);
+        AttackOnFieldResponse attackOnKing = attackOnField(board, isWhite, kingPosition);
+        String attackingChessmanPosition = String.valueOf(attackOnKing.getFirstParameterAttackingChessman()) + String.valueOf(attackOnKing.getSecondParameterAttackingChessman());
+
+        if (attackOnField(board, !isWhite, attackingChessmanPosition).getPossibility()) {
+            return false;
+        }
+        //TODO: WAY
+        //if any piece can cover the king
+        int firstAttackingParameter = attackOnKing.getFirstParameterAttackingChessman();
+        int secondAttackingParameter = attackOnKing.getSecondParameterAttackingChessman();
+
+        if (String.valueOf(board[firstAttackingParameter][secondAttackingParameter].charAt(1)).equals("B") || String.valueOf(board[firstAttackingParameter][secondAttackingParameter].charAt(1)).equals("Q")) {
+            //mean that the bishop is over right
+            if (firstAttackingParameter < firstParameterKing && secondAttackingParameter > secondParameterKing) {
+                for (int i = 0; i < 8; i++) {
+                    if (firstParameterKing - i >= 0 && secondParameterKing + i < 8) {
+                        String position = String.valueOf(firstParameterKing - i) + String.valueOf(secondParameterKing + i);
+                        if (!(firstAttackingParameter == firstParameterKing - i && secondAttackingParameter == secondParameterKing + i)) {
+                            if (simulateMove(position, board, isWhite)) return false;
+                        } else break;
+                    }
+                }
+            }
+
+            //mean that the bishop is over left
+            if (firstAttackingParameter < firstParameterKing && secondAttackingParameter < secondParameterKing) {
+                for (int i = 0; i < 8; i++) {
+                    if (firstParameterKing - i >= 0 && secondParameterKing - i >= 0) {
+                        String position = String.valueOf(firstParameterKing - i) + String.valueOf(secondParameterKing - i);
+                        if (!(firstAttackingParameter == firstParameterKing - i && secondAttackingParameter == secondParameterKing - i)) {
+                            if (simulateMove(position, board, isWhite)) return false;
+                        } else break;
+                    }
+                }
+            }
+
+            //mean that the bishop is bottom left
+            if (firstAttackingParameter > firstParameterKing && secondAttackingParameter < secondParameterKing) {
+                for (int i = 0; i < 8; i++) {
+                    if (firstParameterKing + i < 8 && secondParameterKing - i >= 0) {
+                        String position = String.valueOf(firstParameterKing + i) + String.valueOf(secondParameterKing - i);
+                        if (!(firstAttackingParameter == firstParameterKing + i && secondAttackingParameter == secondParameterKing - i)) {
+                            if (simulateMove(position, board, isWhite)) return false;
+                        } else break;
+                    }
+                }
+            }
+
+            //mean that the bishop is bottom right
+            if (firstAttackingParameter > firstParameterKing && secondAttackingParameter > secondParameterKing) {
+                for (int i = 1; i < 8; i++) {
+                    if (firstParameterKing + i < 8 && secondParameterKing + i < 8) {
+                        String position = String.valueOf(firstParameterKing + i) + String.valueOf(secondParameterKing + i);
+                        if (!(firstAttackingParameter == firstParameterKing + i && secondAttackingParameter == secondParameterKing + i)) {
+                            if (simulateMove(position, board, isWhite)) {
+                                return false;
+                            }
+                            ;
+                        } else break;
+                    }
+                }
+            }
+        }
+
+        //TODO: Rook way
+
+        //Rook on the king left side
+        if (String.valueOf(board[firstAttackingParameter][secondAttackingParameter].charAt(1)).equals("R") || String.valueOf(board[firstAttackingParameter][secondAttackingParameter].charAt(1)).equals("Q")) {
+            if (firstAttackingParameter == firstParameterKing && secondAttackingParameter < secondParameterKing) {
+                for (int i = 0; i < 8; i++) {
+                    if (secondParameterKing - i >= 0) {
+                        String position = String.valueOf(firstParameterKing) + String.valueOf(secondParameterKing - i);
+                        if (!(secondAttackingParameter == secondParameterKing - i)) {
+                            if (simulateMove(position, board, isWhite)) return false;
+                        } else break;
+                    }
+                }
+            }
+            //Rook on the king right side
+            if (firstAttackingParameter == firstParameterKing && secondAttackingParameter > secondParameterKing) {
+                for (int i = 0; i < 8; i++) {
+                    if (secondParameterKing + i < 8) {
+                        String position = String.valueOf(firstParameterKing) + String.valueOf(secondParameterKing + i);
+                        if (!(secondAttackingParameter == secondParameterKing + i)) {
+                            if (simulateMove(position, board, isWhite)) return false;
+                        } else break;
+                    }
+                }
+            }
+            // Rook is over the king
+            if (firstAttackingParameter < firstParameterKing && secondAttackingParameter == secondParameterKing) {
+                for (int i = 0; i < 8; i++) {
+                    if (firstParameterKing - i >= 0) {
+                        String position = String.valueOf(firstParameterKing - i) + String.valueOf(secondParameterKing);
+                        if (!(firstAttackingParameter == firstParameterKing - i)) {
+                            if (simulateMove(position, board, isWhite)) return false;
+                        } else break;
+                    }
+                }
+            }
+            // Rook is over the king
+            if (firstAttackingParameter > firstParameterKing && secondAttackingParameter == secondParameterKing) {
+                for (int i = 0; i < 8; i++) {
+                    if (firstParameterKing + i < 8) {
+                        String position = String.valueOf(firstParameterKing + i) + String.valueOf(secondParameterKing);
+                        if (!(firstAttackingParameter == firstParameterKing + i)) {
+                            if (simulateMove(position, board, isWhite)) return false;
+                        } else break;
+                    }
+                }
+            }
 
 
+        }
 
         return true;
     }
 
-    private Boolean attackOnField(String[][] board, Boolean isWhite, String position) {
+    private AttackOnFieldResponse attackOnField(String[][] board, Boolean isWhite, String position) {
         int firstParameter = Integer.parseInt(String.valueOf(position.charAt(0)));
         int secondParameter = Integer.parseInt(String.valueOf(position.charAt(1)));
 
@@ -121,72 +237,76 @@ public class GameRules {
         Bishop bishop = new Bishop();
         Knight knight = new Knight();
         Queen queen = new Queen();
+        MakeMoveResponse makeMove;
 
-
-        if (rook.makeMove(position, board, !isWhite, "R").getPossibility()) {
-            return true;
+        makeMove = rook.makeMove(position, board, !isWhite, "R");
+        if (makeMove.getPossibility()) {
+            return new AttackOnFieldResponse(true, makeMove.getFirstParameterToClear(), makeMove.getSecondParameterToClear());
         } else if (board[firstParameter][secondParameter].startsWith(colorId)) {
             boardCopy[firstParameter][secondParameter] = "..";
-            if (rook.makeMove(position, boardCopy, !isWhite, "B").getPossibility()) {
+            if (rook.makeMove(position, boardCopy, !isWhite, "R").getPossibility()) {
                 boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
-                return true;
+                return new AttackOnFieldResponse(true, 0, 0);
             } else boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
         }
-        if (bishop.makeMove(position, board, !isWhite, "B").getPossibility()) {
-            return true;
+
+        makeMove = bishop.makeMove(position, board, !isWhite, "B");
+        if (makeMove.getPossibility()) {
+            return new AttackOnFieldResponse(true, makeMove.getFirstParameterToClear(), makeMove.getSecondParameterToClear());
         } else if (board[firstParameter][secondParameter].startsWith(colorId)) {
             boardCopy[firstParameter][secondParameter] = "..";
             if (bishop.makeMove(position, boardCopy, !isWhite, "B").getPossibility()) {
                 boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
-                return true;
-            } else boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
-        }
-        if (knight.makeMove(position, board, !isWhite, "N").getPossibility()) {
-            return true;
-        } else if (board[firstParameter][secondParameter].startsWith(colorId)) {
-            boardCopy[firstParameter][secondParameter] = "..";
-            if (knight.makeMove(position, boardCopy, !isWhite, "B").getPossibility()) {
-                boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
-                return true;
-            } else boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
-        }
-        if (queen.makeMove(position, board, !isWhite, "Q").getPossibility()) {
-            return true;
-        } else if (board[firstParameter][secondParameter].startsWith(colorId)) {
-            boardCopy[firstParameter][secondParameter] = "..";
-            if (queen.makeMove(position, boardCopy, !isWhite, "B").getPossibility()) {
-                boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
-                return true;
+                return new AttackOnFieldResponse(true, 0, 0);
             } else boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
         }
 
+        makeMove = knight.makeMove(position, board, !isWhite, "N");
+        if (makeMove.getPossibility()) {
+            return new AttackOnFieldResponse(true, makeMove.getFirstParameterToClear(), makeMove.getSecondParameterToClear());
+        } else if (board[firstParameter][secondParameter].startsWith(colorId)) {
+            boardCopy[firstParameter][secondParameter] = "..";
+            if (knight.makeMove(position, boardCopy, !isWhite, "N").getPossibility()) {
+                boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
+                return new AttackOnFieldResponse(true, 0, 0);
+            } else boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
+        }
+
+        makeMove = queen.makeMove(position, board, !isWhite, "Q");
+        if (makeMove.getPossibility()) {
+            return new AttackOnFieldResponse(true, makeMove.getFirstParameterToClear(), makeMove.getSecondParameterToClear());
+        } else if (board[firstParameter][secondParameter].startsWith(colorId)) {
+            boardCopy[firstParameter][secondParameter] = "..";
+            if (queen.makeMove(position, boardCopy, !isWhite, "Q").getPossibility()) {
+                boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
+                return new AttackOnFieldResponse(true, 0, 0);
+            } else boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
+        }
         if (!isWhite) {
             if (firstParameter + 1 < 8 && secondParameter - 1 >= 0 && board[firstParameter + 1][secondParameter - 1].equals("1P")) {
-                return true;
-            } else if (board[firstParameter][secondParameter].startsWith(colorId)) {
-                boardCopy[firstParameter][secondParameter] = "..";
-                if (queen.makeMove(position, boardCopy, !isWhite, "B").getPossibility()) {
-                    boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
-                    return true;
-                } else boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
+                return new AttackOnFieldResponse(true, firstParameter + 1, secondParameter - 1);
             }
-
             if (firstParameter + 1 < 8 && secondParameter + 1 < 8 && board[firstParameter + 1][secondParameter + 1].equals("1P")) {
-                return true;
-            } else if (board[firstParameter][secondParameter].startsWith(colorId)) {
-                boardCopy[firstParameter][secondParameter] = "..";
-                if (queen.makeMove(position, boardCopy, !isWhite, "B").getPossibility()) {
-                    boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
-                    return true;
-                } else boardCopy[firstParameter][secondParameter] = board[firstParameter][secondParameter];
+                return new AttackOnFieldResponse(true, firstParameter + 1, secondParameter + 1);
             }
         } else {
             if (firstParameter - 1 >= 0 && secondParameter - 1 >= 0 && board[firstParameter - 1][secondParameter - 1].equals("0P"))
-                return true;
-            }
-            if (firstParameter - 1 >= 0 && secondParameter + 1 < 8 && board[firstParameter - 1][secondParameter + 1].equals("0P"))
-                return true;
+                return new AttackOnFieldResponse(true, firstParameter - 1, secondParameter - 1);
 
+            if (firstParameter - 1 >= 0 && secondParameter + 1 < 8 && board[firstParameter - 1][secondParameter + 1].equals("0P")) {
+                return new AttackOnFieldResponse(true, firstParameter - 1, secondParameter + 1);
+            }
+        }
+
+        return new AttackOnFieldResponse(false, -1, -1);
+    }
+
+    private Boolean simulateMove(String position, String[][] board, Boolean isWhite) {
+        if (App.pawn.makeMove(position, board, isWhite, "P").getPossibility()) return true;
+        if (App.rook.makeMove(position, board, isWhite, "R").getPossibility()) return true;
+        if (App.knight.makeMove(position, board, isWhite, "N").getPossibility()) return true;
+        if (App.bishop.makeMove(position, board, isWhite, "B").getPossibility()) return true;
+        if (App.queen.makeMove(position, board, isWhite, "Q").getPossibility()) return true;
         return false;
     }
 }

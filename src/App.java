@@ -16,14 +16,14 @@ public class App {
     public static void main(String[] args) {
 
         String[][] board = {
-                {"0R", "0N", "..", "0Q", "0K", "0B", "0N", "0R"},
-                {"0P", "0P", "0P", "0P", "0P", "..", "0P", "0P"},
-                {"..", "..", "1P", "1P", "0P", "..", "..", ".."},
-                {"..", "..", "1P", "1K", "1P", "..", "..", ".."},
-                {"..", "..", "1P", "1P", "1P", "..", "..", ".."},
+                {"0R", "0N", "0B", "0Q", "0K", "0B", "0N", "0R"},
+                {"0P", "0P", "0P", "0P", "0P", "0P", "0P", "0P"},
+                {"..", "..", "..", "..", "..", "..", "..", ".."},
+                {"..", "..", "..", "..", "..", "..", "..", ".."},
+                {"..", "..", "..", "..", "..", "..", "..", ".."},
                 {"..", "..", "..", "..", "..", "..", "..", ".."},
                 {"1P", "1P", "1P", "1P", "1P", "1P", "1P", "1P"},
-                {"1R", "1N", "1B", "1Q", "..", "1B", "1N", "1R"},
+                {"1R", "1N", "1B", "1Q", "1K", "1B", "1N", "1R"},
         };
         boolean isWhiteTurn = true;
         while (true) {
@@ -108,36 +108,4 @@ public class App {
     }
 }
 
-
-//checking mate!
-//            if(isWhiteTurn && gameRules.isCheck(board, false) && blackCheck) {
-//                System.out.println("         ---CHECK MATE!---");
-//                System.out.println("         ---WHITE WINS!---");
-//                break;
-//            }
-//            if(!isWhiteTurn && gameRules.isCheck(board, true) && whiteCheck) {
-//                System.out.println("         ---CHECK MATE!---");
-//                System.out.println("         ---BLACK WINS!---");
-//                break;
-
-//check!
-//            if(gameRules.isCheck(board, isWhiteTurn)) {
-//                if(isWhiteTurn) {
-//                    whiteCheck = true;
-//                } else {
-//                    blackCheck = true;
-//                }
-//                System.out.println("CHECK");
-//            }  else {
-//                if(isWhiteTurn) {
-//                    whiteCheck = false;
-//                } else {
-//                    blackCheck = false;
-//                }
-//            }
 // check if there is only 2 kings on the board
-//c heck if is checked know
-// if yes
-// check is check mate
-// continuation
-// end of the game!

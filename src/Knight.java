@@ -19,60 +19,45 @@ public class Knight implements Chessman {
 
         if (board[firstParameter][secondParameter].startsWith(enemyColorId) || board[firstParameter][secondParameter].equals("..")) {
             //long L right top
-            if (firstParameter - 1 >= 0 && secondParameter < 8 && board[firstParameter - 1][secondParameter + 2].equals(colorId + knightId)) {
-                board[firstParameter - 1][secondParameter + 2] = "..";
-                board[firstParameter][secondParameter] = colorId + knightId;
+            if (firstParameter - 1 >= 0 && secondParameter + 2 < 8 && board[firstParameter - 1][secondParameter + 2].equals(colorId + knightId)) {
                 return new MakeMoveResponse(true, firstParameter - 1, secondParameter + 2, firstParameter, secondParameter, colorId + chessmanId);
 
             }
             //short L right top
-            if (firstParameter - 2 >= 0 && secondParameter < 8 && board[firstParameter - 2][secondParameter + 1].equals(colorId + knightId)) {
-                board[firstParameter - 2][secondParameter + 1] = "..";
-                board[firstParameter][secondParameter] = colorId + knightId;
+            if (firstParameter - 2 >= 0 && secondParameter + 1 < 8 && board[firstParameter - 2][secondParameter + 1].equals(colorId + knightId)) {
                 return new MakeMoveResponse(true, firstParameter - 2, secondParameter + 1, firstParameter, secondParameter, colorId + chessmanId);
 
             }
             //short L left top
             if (firstParameter - 2 >= 0 && secondParameter - 1 >= 0 && board[firstParameter - 2][secondParameter - 1].equals(colorId + knightId)) {
-                board[firstParameter - 2][secondParameter - 1] = "..";
-                board[firstParameter][secondParameter] = colorId + knightId;
                 return new MakeMoveResponse(true, firstParameter - 2, secondParameter - 1, firstParameter, secondParameter, colorId + chessmanId);
 
             }
 
             //long L left top
             if (firstParameter - 1 >= 0 && secondParameter - 2 >= 0 && board[firstParameter - 1][secondParameter - 2].equals(colorId + knightId)) {
-                board[firstParameter - 1][secondParameter - 2] = "..";
-                board[firstParameter][secondParameter] = colorId + knightId;
                 return new MakeMoveResponse(true, firstParameter - 1, secondParameter - 2, firstParameter, secondParameter, colorId + chessmanId);
 
             }
             //long L right bot
             if (firstParameter + 1 < 8 && secondParameter + 2 < 8 && board[firstParameter + 1][secondParameter + 2].equals(colorId + knightId)) {
-                board[firstParameter + 1][secondParameter + 2] = "..";
-                board[firstParameter][secondParameter] = colorId + knightId;
                 return new MakeMoveResponse(true, firstParameter + 1, secondParameter + 2, firstParameter, secondParameter, colorId + chessmanId);
 
             }
             //short L right bot
             if (firstParameter + 2 < 8 && secondParameter + 1 < 8 && board[firstParameter + 2][secondParameter + 1].equals(colorId + knightId)) {
-                board[firstParameter + 2][secondParameter + 1] = "..";
-                board[firstParameter][secondParameter] = colorId + knightId;
                 return new MakeMoveResponse(true, firstParameter + 2, secondParameter + 1, firstParameter, secondParameter, colorId + chessmanId);
 
             }
             //short L left bot
             if (firstParameter + 2 < 8 && secondParameter - 1 >= 0 && board[firstParameter + 2][secondParameter - 1].equals(colorId + knightId)) {
-                board[firstParameter + 2][secondParameter - 1] = "..";
-                board[firstParameter][secondParameter] = colorId + knightId;
                 return new MakeMoveResponse(true, firstParameter + 2, secondParameter - 1, firstParameter, secondParameter, colorId + chessmanId);
 
             }
 
             //long L left bot
             if (firstParameter + 1 < 8 && secondParameter - 2 >= 0 && board[firstParameter + 1][secondParameter - 2].equals(colorId + knightId)) {
-                board[firstParameter + 1][secondParameter - 2] = "..";
-                board[firstParameter][secondParameter] = colorId + knightId;
+
                 return new MakeMoveResponse(true, firstParameter + 1, secondParameter - 2, firstParameter, secondParameter, colorId + chessmanId);
 
             }

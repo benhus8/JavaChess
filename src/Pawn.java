@@ -6,7 +6,7 @@ public class Pawn implements Chessman {
         int secondParameter = Integer.parseInt(String.valueOf(position.charAt(1)));
 
         if (isWhite) {
-            if (firstParameter == 4 && board[6][secondParameter].equals("1P")) {
+            if (firstParameter == 4 && board[6][secondParameter].equals("1P") && board[4][secondParameter].equals("..")) {
                 return new MakeMoveResponse(true, 6, secondParameter, 4, secondParameter, "1P");
             }
             if (firstParameter + 1 < 8 && board[firstParameter + 1][secondParameter].equals("1P") &&
@@ -22,8 +22,8 @@ public class Pawn implements Chessman {
                 return new MakeMoveResponse(true, firstParameter + 1, secondParameter + 1,firstParameter, secondParameter, "1P");
             }
         } else {
-            if (firstParameter == 3 && board[1][secondParameter].equals("0P")) {
-                return new MakeMoveResponse(true, 1, secondParameter,firstParameter, secondParameter,  "0P");
+            if (firstParameter == 3 && board[1][secondParameter].equals("0P") && board[3][secondParameter].equals("..")) {
+                return new MakeMoveResponse(true, 1, secondParameter, 3, secondParameter,  "0P");
             }
             if (firstParameter - 1 >= 0 && board[firstParameter - 1][secondParameter].equals("0P") &&
                     board[firstParameter][secondParameter].equals("..")) {
