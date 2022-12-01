@@ -5,7 +5,7 @@ The project was created for the completion of the Object-Oriented Programming co
 ### Board, chesspieces And moves
     K = King	Q = Queen	R = Rook	B = Bishop	N = Knight
 ### Prefixes
-0 - means balck colour
+0 - means balck colour <br />
 1 - means white colour
 
       A B C D E F G H 
