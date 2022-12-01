@@ -1,17 +1,22 @@
 # JavaChess
-An awesome project and the history of making the best chess game based on java in the whole Internet!
+### Introduction
+The project was created for the completion of the Object-Oriented Programming course at the 3rd semester at the Poznań University of Technology. The project is based on a simplified chess notation and the moves consist in entering the coordinates of successive fields.
 
+### Board And Moves
+    K = King	Q = Queen	R = Rook	B = Bishop	N = Knight
+      A B C D E F G H 
+    8 R N B K Q B N R 8
+    7 p p p p p p p p 7
+    6                 6
+    5                 5
+    4                 4
+    3                 3
+    2 p p p p p p p p 2   
+    1 R N B K Q B N R 1
+      A B C D E F G H 
+Example:
+to move pawn to A3 field type: A3 <br />
+to move any diffrent chesspiece than pawn on A3 type: XA3 <br />
+where X = name of chessPiece (to move knight type NA3, queen, QA3 etc.)
 
-K = King	Q = Queen	R = Rook	B = Bishop	N = Knight
-a b c d e f g h
-8                 8
-7                 7
-6                 6
-5                 5
-4                 4
-3                 3
-2                 2
-1                 1
-a b c d e f g h
-
-pawn?
+### Have Fun!
